@@ -2,7 +2,7 @@
 
 namespace App\Console\Commands;
 
-use App\Models\User;
+use App\Models\Docente;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Hash;
 
@@ -13,7 +13,7 @@ class CreateCustomFilamentUser extends Command
      *
      * @var string
      */
-    protected $signature = 'app:create-custom-filament-user';
+    protected $signature = 'make:custom-filament-user';
 
     /**
      * The console command description.
@@ -34,7 +34,7 @@ class CreateCustomFilamentUser extends Command
         $email = $this->ask('Email');
         $password = $this->secret('Password');
 
-        $user = User::create([
+        $user = Docente::create([
             'nombres' => $nombre,
             'ap_paterno' => $paterno,
             'ap_materno' => $materno,
@@ -43,6 +43,6 @@ class CreateCustomFilamentUser extends Command
             'password' => Hash::make($password),
         ]);
 
-        $this->info("Usuario {$nombre} creado exitosamente");
+        $this->info("Docente {$nombre} creado exitosamente");
     }
 }

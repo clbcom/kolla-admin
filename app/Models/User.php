@@ -3,11 +3,14 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Models\Publicacion;
+use Filament\Models\Contracts\HasName;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
 
-class User extends Authenticatable
+class User extends Authenticatable implements HasName
 {
     use HasFactory, Notifiable;
 
@@ -17,7 +20,10 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'nombres',
+        'ap_paterno',
+        'ap_materno',
+        'tipo_usuario',
         'email',
         'password',
     ];
@@ -29,8 +35,12 @@ class User extends Authenticatable
      */
     protected $hidden = [
         'password',
-        'remember_token',
     ];
+
+    public function getFilamentName(): string
+    {
+        return "{$this->nombres} {$this->ap_paterno} {$this->ap_materno} {$this->email}";
+    }
 
     /**
      * Get the attributes that should be cast.
@@ -40,8 +50,14 @@ class User extends Authenticatable
     protected function casts(): array
     {
         return [
-            'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    /**
+     * Obtiene las publicaciones
+     */
+    public function publicaciones() : HasMany {
+        return $this->hasMany(Publicacion::class, 'id_usuario');   
     }
 }

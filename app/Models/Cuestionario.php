@@ -10,6 +10,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Cuestionario extends Model
 {
     use HasFactory;
+    
+    /**
+     * @var bool
+     */
+    public $timestamps = false;
 
     /**
      * @var string

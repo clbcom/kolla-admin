@@ -9,6 +9,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Voto extends Model
 {
     use HasFactory;
+    
+    /**
+     * @var bool
+     */
+    public $timestamps = false;
 
     /**
      * @var array

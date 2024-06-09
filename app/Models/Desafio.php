@@ -8,6 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Desafio extends Model
 {
     use HasFactory;
+    
+    /**
+     * @var bool
+     */
+    public $timestamps = false;
 
     /**
      * @var array

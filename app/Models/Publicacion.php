@@ -18,7 +18,7 @@ class Publicacion extends Post {
     ];
 
     public function __construct(array $attributes = []) {
-        parent::__construct($attribute);
+        parent::__construct($attributes);
         $this->fillable = array_merge(parent::$fillable, $this->fillable);
     }
 

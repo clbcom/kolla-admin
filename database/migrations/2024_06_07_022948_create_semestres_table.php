@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('semestres', function (Blueprint $table) {
             $table->id();
             $table->unsignedTinyInteger('numeral')->unique();
-            $table->string('literal', 10);
+            $table->string('literal');
         });
     }
 

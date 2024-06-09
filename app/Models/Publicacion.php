@@ -11,16 +11,18 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 class Publicacion extends Post {
 
     /**
+     * @var string
+     */
+    protected $table = 'publicaciones';
+
+    /**
      * @var array
      */
     protected $fillable = [
+        'id_usuario',
+        'contenido',
         'estado'
     ];
-
-    public function __construct(array $attributes = []) {
-        parent::__construct($attributes);
-        $this->fillable = array_merge(parent::$fillable, $this->fillable);
-    }
 
     /**
      * Obtiene las categorias de la publicacion

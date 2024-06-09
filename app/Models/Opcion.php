@@ -8,6 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Opcion extends Model
 {
     use HasFactory;
+
+    /**
+     * @var string
+     */
+    protected $table = 'opciones';
     
     /**
      * @var bool

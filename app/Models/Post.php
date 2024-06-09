@@ -21,14 +21,6 @@ class Post extends Model
     public $timestamps = false;
 
     /**
-     * @var array
-     */
-    protected $fillable = [
-        'id_usuario',
-        'contenido',
-    ];
-
-    /**
      * Obtiene al usuario del post (publicacion o comentario)
      */
     public function usuario() : BelongsTo {

@@ -12,14 +12,10 @@ class Comentario extends Post {
      * @var array
      */
     protected $fillable = [
+        'id_usuario',
+        'contenido',
         'id_publicacion'
     ];
-
-    public function __construct(array $attributes = []) {
-        parent::__construct($attributes);
-
-        $this->fillable = array_merge(parent::$fillable, $this->fillable);
-    }
 
     /**
      * Obtiene la publicacion a la que pertenece

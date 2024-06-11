@@ -23,7 +23,7 @@ class CategoriaResource extends Resource
     {
         return $form
             ->schema([
-                //
+                Forms\Components\TextInput::make('nombre')
             ]);
     }
 

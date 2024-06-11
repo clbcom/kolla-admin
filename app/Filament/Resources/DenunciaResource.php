@@ -2,9 +2,9 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\SemestreResource\Pages;
-use App\Filament\Resources\SemestreResource\RelationManagers;
-use App\Models\Semestre;
+use App\Filament\Resources\DenunciaResource\Pages;
+use App\Filament\Resources\DenunciaResource\RelationManagers;
+use App\Models\Denuncia;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -13,20 +13,17 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class SemestreResource extends Resource
+class DenunciaResource extends Resource
 {
-    protected static ?string $model = Semestre::class;
+    protected static ?string $model = Denuncia::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-group';
+    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('numeral')
-                ->required()
-                ->integer(),
-                Forms\Components\TextInput::make('literal')->required(),
+                //
             ]);
     }
 
@@ -34,8 +31,7 @@ class SemestreResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('numeral'),
-                Tables\Columns\TextColumn::make('literal'),
+                //
             ])
             ->filters([
                 //
@@ -60,9 +56,9 @@ class SemestreResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListSemestres::route('/'),
-            'create' => Pages\CreateSemestre::route('/create'),
-            'edit' => Pages\EditSemestre::route('/{record}/edit'),
+            'index' => Pages\ListDenuncias::route('/'),
+            'create' => Pages\CreateDenuncia::route('/create'),
+            'edit' => Pages\EditDenuncia::route('/{record}/edit'),
         ];
     }
 }

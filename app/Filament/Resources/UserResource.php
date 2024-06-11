@@ -23,7 +23,24 @@ class UserResource extends Resource
     {
         return $form
             ->schema([
-                //
+                Forms\Components\TextInput::make('nombres')
+                    ->required(),
+                Forms\Components\TextInput::make('ap_paterno')
+                    ->required()
+                    ->label('Apellido Paterno'),
+                Forms\Components\TextInput::make('ap_materno')
+                    ->required()
+                    ->label('Apellido Materno'),
+                Forms\Components\Select::make('tipo_usuario')
+                    ->required()
+                    ->options(['alumno' => 'Alumno', 'docente' => 'Docente']),
+                Forms\Components\TextInput::make('email')
+                    ->required()
+                    ->email(),
+                Forms\Components\TextInput::make('password')
+                    ->required()
+                    ->password()
+                    ->revealable(),
             ]);
     }
 

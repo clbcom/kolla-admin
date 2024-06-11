@@ -39,9 +39,17 @@ return [
         'public' => [
             'driver' => 'local',
             'root' => storage_path('app/public'),
-            'url' => env('APP_URL').'/storage',
+            'url' => env('APP_URL') . '/storage',
             'visibility' => 'public',
             'throw' => false,
+        ],
+        'b2' => [
+                'driver' => 'b2',
+                'key_id' => env('B2_KEY_ID'),
+                'application_key' => env('B2_APPLICATION_KEY'),
+                'bucket_name' => env('B2_BUCKET_NAME'),
+                'bucket_id' => env('B2_BUCKET_ID'), // Opcional, si lo necesitas
+                'url' => env('B2_URL'), // Opcional, para URL personalizada
         ],
 
         's3' => [

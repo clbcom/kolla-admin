@@ -17,7 +17,7 @@ class DenunciaResource extends Resource
 {
     protected static ?string $model = Denuncia::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-shield-exclamation';
 
     public static function form(Form $form): Form
     {

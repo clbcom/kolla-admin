@@ -17,7 +17,7 @@ class SemestreResource extends Resource
 {
     protected static ?string $model = Semestre::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-group';
+    protected static ?string $navigationIcon = 'heroicon-o-academic-cap';
 
     public static function form(Form $form): Form
     {

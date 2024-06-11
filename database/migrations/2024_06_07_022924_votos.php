@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('votos', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('id_publicacion');
-            $table->unsignedBigInteger('id_comentario');
-            $table->unsignedBigInteger('positivo');
-            $table->unsignedBigInteger('negativo');
+            $table->unsignedBigInteger('id_publicacion')->nullable();
+            $table->unsignedBigInteger('id_comentario')->nullable();
+            $table->unsignedBigInteger('positivo')->nullable();
+            $table->unsignedBigInteger('negativo')->nullable();
             $table->timestamp('fecha');
 
             $table->foreign('id_publicacion')->references('id')->on('publicaciones');

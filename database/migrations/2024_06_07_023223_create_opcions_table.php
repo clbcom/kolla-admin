@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('id_pregunta');
             $table->text('texto_opcion');
-            $table->boolean('es_correcta');
+            $table->boolean('es_correcta')->nullable();
 
             $table->foreign('id_pregunta')->references('id')->on('preguntas');
         });

@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('desafios', function (Blueprint $table) {
             $table->id();
             $table->string('nombre');
-            $table->string('url_img', 1000);
-            $table->text('descripcion');
+            $table->string('url_img', 1000)->nullable();
+            $table->text('descripcion')->nullable();
         });
     }
 

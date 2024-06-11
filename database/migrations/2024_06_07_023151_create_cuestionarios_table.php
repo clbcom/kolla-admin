@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('id_tema');
             $table->string('titulo');
-            $table->text('descripcion');
+            $table->text('descripcion')->nullable();
 
             $table->foreign('id_tema')->references('id')->on('temas');
         });

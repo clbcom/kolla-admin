@@ -14,9 +14,9 @@ return new class extends Migration
         Schema::create('temas', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('id_materia');
-            $table->unsignedSmallInteger('nro_orden');
+            $table->unsignedSmallInteger('nro_orden')->nullable();
             $table->string('titulo');
-            $table->text('descripcion');
+            $table->text('descripcion')->nullable();
 
             $table->foreign('id_materia')->references('id')->on('materias');
         });

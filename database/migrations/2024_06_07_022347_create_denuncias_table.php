@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('id_usuario');
             $table->enum('estado', ['abierto', 'cerrado']);
-            $table->text('descripcion');
-            $table->string('url_img', 1000);
+            $table->text('descripcion')->nullable();
+            $table->string('url_img', 1000)->nullable();
             $table->timestamp('fecha');
 
             $table->foreign('id_usuario')->references('id')->on('users');

@@ -14,11 +14,11 @@ return new class extends Migration
         Schema::create('materias', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('id_usuario');
-            $table->unsignedBigInteger('id_semestre');
-            $table->unsignedBigInteger('id_desafio');
-            $table->unsignedSmallInteger('nro_orden');
+            $table->unsignedBigInteger('id_semestre')->nullable();
+            $table->unsignedBigInteger('id_desafio')->nullable();
+            $table->unsignedSmallInteger('nro_orden')->nullable();
             $table->string('nombre');
-            $table->text('descripcion');
+            $table->text('descripcion')->nullable();
 
             $table->foreign('id_usuario')->references('id')->on('users');
             $table->foreign('id_semestre')->references('id')->on('semestres');

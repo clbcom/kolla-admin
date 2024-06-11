@@ -15,9 +15,9 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('id_tema');
             $table->string('nombre');
-            $table->string('url', 1000);
-            $table->enum('tipo', ['video', 'pdf', 'img']);
-            $table->unsignedInteger('duracion');
+            $table->string('url', 1000)->nullable();
+            $table->enum('tipo', ['video', 'pdf', 'img'])->nullable();
+            $table->unsignedInteger('duracion')->nullable();
             $table->timestamp('fecha');
 
             $table->foreign('id_tema')->references('id')->on('temas');

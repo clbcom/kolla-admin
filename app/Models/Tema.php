@@ -2,9 +2,12 @@
 
 namespace App\Models;
 
+use App\Models\Recurso;
 use App\Models\Cuestionario;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Tema extends Model
@@ -31,5 +34,16 @@ class Tema extends Model
      */
     public function cuestionarios(): HasMany {
         return $this->hasMany(Cuestionario::class, 'id_tema');
+    }
+
+    public function recurso() : HasOne {
+        return $this->hasOne(Recurso::class, 'id_tema');
+    }
+
+    /**
+     * Obtiene los recursos del tema
+     */
+    public function recursos() : HasMany {
+        return $this->hasMany(Recurso::class, 'id_tema');
     }
 }

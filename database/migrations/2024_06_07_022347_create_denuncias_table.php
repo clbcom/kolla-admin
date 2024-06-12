@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('url_img', 1000)->nullable();
             $table->timestamp('fecha');
 
-            $table->foreign('id_usuario')->references('id')->on('users');
+            $table->foreign('id_usuario')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

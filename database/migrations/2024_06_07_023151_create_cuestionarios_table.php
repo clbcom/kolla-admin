@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('cuestionarios', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('id_tema');
+            $table->unsignedBigInteger('id_tema')->nullable();
             $table->string('titulo');
             $table->text('descripcion')->nullable();
 
-            $table->foreign('id_tema')->references('id')->on('temas');
+            $table->foreign('id_tema')->references('id')->on('temas')->onDelete('cascade');
         });
     }
 

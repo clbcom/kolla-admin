@@ -18,8 +18,8 @@ return new class extends Migration
             $table->text('contenido');
             $table->timestamp('fecha');
 
-            $table->foreign('id_publicacion')->references('id')->on('publicaciones');
-            $table->foreign('id_usuario')->references('id')->on('users');
+            $table->foreign('id_publicacion')->references('id')->on('publicaciones')->onDelete('cascade');
+            $table->foreign('id_usuario')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::drepIfExists('comentarios');
+        Schema::dropIfExists('comentarios');
     }
 };

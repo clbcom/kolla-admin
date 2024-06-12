@@ -20,7 +20,7 @@ return new class extends Migration
             $table->unsignedInteger('duracion')->nullable();
             $table->timestamp('fecha');
 
-            $table->foreign('id_tema')->references('id')->on('temas');
+            $table->foreign('id_tema')->references('id')->on('temas')->onDelete('cascade');
         });
     }
 

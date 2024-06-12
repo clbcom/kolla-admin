@@ -19,8 +19,8 @@ return new class extends Migration
             $table->unsignedBigInteger('negativo')->nullable();
             $table->timestamp('fecha');
 
-            $table->foreign('id_publicacion')->references('id')->on('publicaciones');
-            $table->foreign('id_comentario')->references('id')->on('comentarios');
+            $table->foreign('id_publicacion')->references('id')->on('publicaciones')->onDelete('cascade');
+            $table->foreign('id_comentario')->references('id')->on('comentarios')->onDelete('cascade');
         });
     }
 

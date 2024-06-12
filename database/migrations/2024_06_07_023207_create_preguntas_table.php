@@ -16,7 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('id_cuestionario');
             $table->string('texto_pregunta');
 
-            $table->foreign('id_cuestionario')->references('id')->on('cuestionarios');
+            $table->foreign('id_cuestionario')->references('id')->on('cuestionarios')->onDelete('cascade');
         });
     }
 

@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('titulo');
             $table->text('descripcion')->nullable();
 
-            $table->foreign('id_materia')->references('id')->on('materias');
+            $table->foreign('id_materia')->references('id')->on('materias')->onDelete('cascade');
         });
     }
 

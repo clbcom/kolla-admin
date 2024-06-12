@@ -18,7 +18,7 @@ return new class extends Migration
             $table->enum('estado', ['abierto', 'cerrado']);
             $table->timestamp('fecha');
 
-            $table->foreign('id_usuario')->references('id')->on('users');
+            $table->foreign('id_usuario')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

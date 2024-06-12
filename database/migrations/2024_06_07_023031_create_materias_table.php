@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('materias', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('id_usuario');
-            $table->unsignedBigInteger('id_semestre')->nullable();
-            $table->unsignedBigInteger('id_desafio')->nullable();
+            $table->unsignedBigInteger('id_usuario')->cascadeOnDelete();
+            $table->unsignedBigInteger('id_semestre')->nullable()->cascadeOnDelete();
+            $table->unsignedBigInteger('id_desafio')->nullable()->cascadeOnDelete();
             $table->unsignedSmallInteger('nro_orden')->nullable();
             $table->string('nombre');
             $table->text('descripcion')->nullable();

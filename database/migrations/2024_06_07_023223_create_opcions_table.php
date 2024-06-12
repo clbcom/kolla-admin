@@ -17,7 +17,7 @@ return new class extends Migration
             $table->text('texto_opcion');
             $table->boolean('es_correcta')->nullable();
 
-            $table->foreign('id_pregunta')->references('id')->on('preguntas');
+            $table->foreign('id_pregunta')->references('id')->on('preguntas')->onDelete('cascade');
         });
     }
 

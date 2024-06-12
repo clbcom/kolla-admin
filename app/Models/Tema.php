@@ -13,7 +13,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Tema extends Model
 {
     use HasFactory;
-    
+
     /**
      * @var bool
      */
@@ -32,18 +32,29 @@ class Tema extends Model
     /**
      * Obtiene los cuestionarios
      */
-    public function cuestionarios(): HasMany {
+    public function cuestionarios(): HasMany
+    {
         return $this->hasMany(Cuestionario::class, 'id_tema');
     }
 
-    public function recurso() : HasOne {
+    public function recurso(): HasOne
+    {
         return $this->hasOne(Recurso::class, 'id_tema');
+    }
+
+    /**
+     * Obtiene el cuestionario de la materia
+     */
+    public function cuestionario(): BelongsTo
+    {
+        return $this->belongsTo(Cuestionario::class, "id_tema");
     }
 
     /**
      * Obtiene los recursos del tema
      */
-    public function recursos() : HasMany {
+    public function recursos(): HasMany
+    {
         return $this->hasMany(Recurso::class, 'id_tema');
     }
 }

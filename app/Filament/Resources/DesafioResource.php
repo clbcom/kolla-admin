@@ -29,7 +29,6 @@ class DesafioResource extends Resource
                 Forms\Components\FileUpload::make('url_img')
                     ->disk('public')
                     ->directory('images')
-                    ->required()
                     ->label('Imagen')
                     ->acceptedFileTypes(['image/*'])
                     ->columnSpanFull(),

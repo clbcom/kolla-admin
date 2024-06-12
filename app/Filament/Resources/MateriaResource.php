@@ -39,9 +39,11 @@ class MateriaResource extends Resource
                     ->required(),
                 Forms\Components\Select::make('id_semestre')
                     ->label('Seleccione semestre')
-                    ->options(Semestre::all()->pluck('literal', 'id')),
+                    ->options(Semestre::all()->pluck('literal', 'id'))
+                    ->native(false),
                 Forms\Components\Select::make('id_desafio')
                     ->label('Seleccione o cree un desafio')
+                    ->native(false)
                     ->options(Desafio::all()->pluck('nombre', 'id')),
                 Forms\Components\TextInput::make('nro_orden')
                     ->integer()

@@ -10,11 +10,9 @@
 </head>
 
 <body class="">
-    @livewire('default.navbar')
     <main>
         {{ $slot }}
     </main>
-    @livewire('default.footer')
     @livewireScripts
 </body>
 

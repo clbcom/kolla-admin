@@ -1,4 +1,4 @@
-<div class="bg-[url('../img/bg-code.jpg')] min-h-screen bg-fixed bg-cover">
+<div class="bg-[url(../../public/img/bg-code.jpg)] min-h-screen bg-fixed bg-cover">
     <header class="p-5">
         <div
             class="box-border bg-transparent flex flex-row items-center justify-between rounded-full border-slate-600 border text-amber-50 text-xl font-bold backdrop-blur">
@@ -6,7 +6,7 @@
                 <span>Kolla</span>
             </div>
             <nav class="flex flex-row items-center justify-end w-auto font-bold">
-                <div class="p-5 hover:text-amber-500"><a class="" href="/materias">Materias</a></div>
+                <div class="p-5 hover:text-amber-500"><a class="" href="/semestres">Ver semestres</a></div>
                 <div class="p-5 hover:text-amber-500"><a class="" href="/foro">Foro</a></div>
                 <div class="flex p-5 text-amber-500 items-center ml-5 border-l border-l-slate-600 hover:text-amber-50">
                     <a class="" href="/login">Iniciar sesion</a>
@@ -23,7 +23,7 @@
     <div class="h-screen">
         <div class="w-2/5 pt-40 pl-20 pb-20 space-y-10">
             <h1 class="text-amber-50 text-6xl">
-                Material y cursos en linea
+                Material y cursos en linea de
                 <span class="font-bold text-amber-500">Ingenieria de sistemas.</span>
             </h1>
             <p class="text-xl text-amber-50 opacity-60">Los contenidos necesarios en <span

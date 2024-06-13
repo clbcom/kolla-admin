@@ -4,7 +4,7 @@
     </div>
     <nav class="flex flex-row items-center justify-end w-auto font-bold">
         <div class="p-5 hover:text-amber-600"><a class="" href="/">Inicio</a></div>
-        <div class="p-5 hover:text-amber-600"><a class="" href="/materias">Materias</a></div>
+        <div class="p-5 hover:text-amber-600"><a class="" href="/semestres">Ver semestres</a></div>
         <div class="p-5 hover:text-amber-600"><a class="" href="/foro">Foro</a></div>
         <div class="flex p-5 text-amber-600 items-center">
             <a class="" href="/login">Iniciar sesion</a>

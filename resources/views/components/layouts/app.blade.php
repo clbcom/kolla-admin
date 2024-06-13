@@ -11,8 +11,10 @@
 
 <body class="">
     @livewire('default.navbar')
-    <main>
-        {{ $slot }}
+    <main class="min-h-screen bg-[url('../../public/img/texturas/gorro.png')] bg-cover bg-no-repeat">
+        <div class="w-full min-h-screen backdrop-blur">
+            {{ $slot }}
+        </div>
     </main>
     @livewire('default.footer')
     @livewireScripts

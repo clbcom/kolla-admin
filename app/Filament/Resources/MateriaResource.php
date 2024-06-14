@@ -66,27 +66,49 @@ class MateriaResource extends Resource
                         Forms\Components\Fieldset::make('Archivo')
                             ->relationship('recurso', condition: fn (?array $state): bool => filled($state['nombre']))
                             ->schema([
-                                Forms\Components\FileUpload::make('url')
-                                    ->columnSpanFull()
-                                    ->directory('recursos')
-                                    ->acceptedFileTypes(['image/*', 'application/pdf', 'application/mp4'])
-                                    ->afterStateUpdated(function (Get $get, Set $set) {
-                                        foreach ($get('url') as $file) {
-                                            $nombreArchivo = preg_replace('/\.[^.]+$/i', '', $file->getClientOriginalName());
-                                            Log::info($get('temas'));
-                                            $set('nombre', $nombreArchivo);
-                                        }
-                                    }),
-                                Forms\Components\TextInput::make('nombre')->columnSpan(5),
                                 Forms\Components\Select::make('tipo')
-                                    ->columnSpan(2)
+                                    ->columnSpanFull()
+                                    ->live()
+                                    ->default('video')
                                     ->options([
                                         'video' => 'Video',
                                         'pdf' => 'PDF\'s',
                                         'img' => 'Imagen'
                                     ]),
+                                Forms\Components\Grid::make(1)
+                                    ->schema(fn (Get $get): array => match ($get('tipo')) {
+                                        'video' => [
+                                            Forms\Components\TextInput::make('url')
+                                                ->live()
+                                                ->afterStateUpdated(function (Get $get, Set $set) {
+                                                    $url = $get('url');
+                                                    $youtube = "https://www.youtube.com/oembed?url=" . $url . "&format=json";
+
+                                                    $recurso = curl_init($youtube);
+                                                    curl_setopt($recurso, CURLOPT_RETURNTRANSFER, 1);
+                                                    $return = curl_exec($recurso);
+                                                    curl_close($recurso);
+
+                                                    $set('nombre', json_decode($return, true)['title']);
+                                                })
+                                        ],
+                                        default => [
+                                            Forms\Components\FileUpload::make('url')
+                                                ->label("Seleccione su archivo")
+                                                ->columnSpanFull()
+                                                ->directory('recursos')
+                                                ->acceptedFileTypes(['image/*', 'application/pdf', 'application/mp4'])
+                                                ->afterStateUpdated(function (Get $get, Set $set) {
+                                                    foreach ($get('url') as $file) {
+                                                        $nombreArchivo = preg_replace('/\.[^.]+$/i', '', $file->getClientOriginalName());
+                                                        Log::info($get('temas'));
+                                                        $set('nombre', $nombreArchivo);
+                                                    }
+                                                }),
+                                        ]
+                                    }),
+                                Forms\Components\TextInput::make('nombre')->columnSpanFull(),
                             ])
-                            ->columns(7)
 
                     ])
                     ->grid(2)

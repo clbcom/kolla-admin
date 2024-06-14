@@ -1,0 +1,1 @@
+<embed class="w-full h-full" src="{{ Storage::url($url) }}" type="application/pdf">

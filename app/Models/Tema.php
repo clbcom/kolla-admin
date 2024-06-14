@@ -45,9 +45,9 @@ class Tema extends Model
     /**
      * Obtiene el cuestionario de la materia
      */
-    public function cuestionario(): BelongsTo
+    public function cuestionario(): HasOne
     {
-        return $this->belongsTo(Cuestionario::class, "id_tema");
+        return $this->hasOne(Cuestionario::class, "id_tema");
     }
 
     /**

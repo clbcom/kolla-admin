@@ -3,7 +3,7 @@
     <div class="w-2/3">
         <div class="flex flex-row items-center p-5">
             <div class="text-xl w-2/3">
-                <span class="text-[rgba(0,0,0,0.5)]">Materia:</span>
+                <span class="opacity-50">Materia:</span>
                 <h1 class="font-bold">{{ $materia->nombre }}</h1>
                 <span
                     class="inline-block rounded-full mt-10 px-5 py-3 bg-amber-500 text-amber-50 hover:shadow-lg transition-shadow">
@@ -23,7 +23,7 @@
             </div>
         </div>
         <div class="p-5">
-            <span class="font-bold">Contenido:</span>
+            <span class="font-bold text-xl opacity-50">Contenido:</span>
             @livewire('temas.componente-tema', ['temas' => $materia->temas])
         </div>
     </div>

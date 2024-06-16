@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('medios', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('id_publicacion');
-            $table->unsignedBigInteger('id_comentario');
+            $table->unsignedBigInteger('id_publicacion')->nullable();
+            $table->unsignedBigInteger('id_comentario')->nullable();
             $table->enum('tipo_medio', ['enlace', 'img']);
             $table->string('url', 1000);
 

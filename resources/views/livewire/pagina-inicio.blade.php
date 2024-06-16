@@ -1,20 +1,24 @@
 <div class="bg-[url(../../public/img/bg-code.jpg)] min-h-screen bg-fixed bg-cover">
     <header class="p-5">
         <div
-            class="box-border bg-transparent flex flex-row items-center justify-between rounded-full border-slate-600 border text-amber-50 text-xl font-bold backdrop-blur">
+            class="box-border bg-transparent flex flex-row items-center justify-between rounded-full border text-amber-50 text-xl font-bold backdrop-blur">
             <div class="items-center pl-5 text-4xl">
                 <span>Kolla</span>
             </div>
             <nav class="flex flex-row items-center justify-end w-auto font-bold">
                 <div class="p-5 hover:text-amber-500"><a class="" href="/semestres">Ver semestres</a></div>
                 <div class="p-5 hover:text-amber-500"><a class="" href="/foro">Foro</a></div>
-                <div class="flex p-5 text-amber-500 items-center ml-5 border-l border-l-slate-600 hover:text-amber-50">
-                    <a class="" href="/login">Iniciar sesion</a>
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                        stroke="currentColor" class="size-6">
-                        <path stroke-linecap="round" stroke-linejoin="round"
-                            d="M15.75 9V5.25A2.25 2.25 0 0 0 13.5 3h-6a2.25 2.25 0 0 0-2.25 2.25v13.5A2.25 2.25 0 0 0 7.5 21h6a2.25 2.25 0 0 0 2.25-2.25V15M12 9l-3 3m0 0 3 3m-3-3h12.75" />
-                    </svg>
+                <div class="flex p-5 text-amber-500 items-center ml-5 border-l  hover:text-amber-50">
+                    @if (Auth::check())
+                        <a href="/mio">{{ Auth::user()->nombres }}</a>
+                    @else
+                        <a class="" href="/login">Iniciar sesion</a>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor" class="size-6">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M15.75 9V5.25A2.25 2.25 0 0 0 13.5 3h-6a2.25 2.25 0 0 0-2.25 2.25v13.5A2.25 2.25 0 0 0 7.5 21h6a2.25 2.25 0 0 0 2.25-2.25V15M12 9l-3 3m0 0 3 3m-3-3h12.75" />
+                        </svg>
+                    @endif
                 </div>
             </nav>
         </div>
@@ -34,7 +38,7 @@
             <div>
                 <div
                     class="inline-block bg-amber-500 px-5 py-3 rounded-full text-xl text-slate-900 hover:shadow-xl transition-shadow">
-                    <a href="/materias">Inicia ahora</a>
+                    <a href="/semestres">Inicia ahora</a>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                         stroke="currentColor" class="size-6 inline">
                         <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
@@ -42,7 +46,7 @@
                 </div>
             </div>
         </div>
-        
+
     </div>
     <div class="h-screen">
         <div class="w-2/5 pt-60 pl-20 pb-20  space-y-10">

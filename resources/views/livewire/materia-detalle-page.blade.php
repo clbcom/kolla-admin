@@ -29,6 +29,35 @@
     </div>
     {{-- Informacion adicional --}}
     <div class="w-1/3 p-5 space-y-5">
+
+        {{-- Acciones --}}
+        <div class="flex flex-row justify-center items-center text-lg text-purple-50 space-x-1">
+            <div
+                class="{{ $anterior ? 'border-purple-400 text-purple-400 hover:bg-purple-400 hover:text-purple-50' : 'border-purple-200 text-purple-200' }} border-2 p-3 rounded-l-full transition-colors">
+                @if ($anterior)
+                    <a class="inline-block" href="/materias/{{ $anterior->id }}">
+                        Anterior
+                    </a>
+                @else
+                    <span>Anterior</span>
+                @endif
+            </div>
+
+            <div
+                class="border-purple-400 text-purple-400 hover:bg-purple-400 hover:text-purple-50 border-2 p-3 w-full text-center transition-colors">
+                <a href="/semestres/{{ $materia->semestre->numeral }}">Materias</a>
+            </div>
+
+            <div
+                class="{{ $siguiente ? 'border-purple-400 text-purple-400 hover:bg-purple-400 hover:text-purple-50' : 'border-purple-200 text-purple-200' }} border-2 p-3 rounded-r-full transition-colors">
+                @if ($siguiente)
+                    <a href="/materias/{{ $siguiente->id }}">Siguiente</a>
+                @else
+                    <span>Siguiente</span>
+                @endif
+            </div>
+        </div>
+
         {{-- Informacion del docente --}}
         <div>
             <span class="font-bold">Docente:</span>

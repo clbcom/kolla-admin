@@ -86,6 +86,15 @@
 
     {{-- Informacion adicional --}}
     <div class="w-1/3 p-5 space-y-5">
+        {{-- Botones --}}
+        <div class="flex justify-center">
+            <a class="w-full text-center inline-block border-2 border-purple-400 text-purple-400 hover:bg-purple-400 hover:text-purple-50 transition-colors rounded-full text-lg px-5 py-3"
+                href="/materias/{{ $cuestionario->tema->id_materia }}/temas/{{ $cuestionario->tema->id }}">
+                Volver a materia
+            </a>
+        </div>
+
+        {{-- Calificacion --}}
         <div>
             <span class="font-bold">Calificacion:</span>
             <div class="text-lg opacity-60 border-l-4 border-l-amber-500 pl-5">
@@ -98,6 +107,8 @@
                 @endif
             </div>
         </div>
+
+        {{-- Instrucciones --}}
         <div>
             <span class="font-bold">Instrucciones:</span>
             <div class="border-l-4 border-l-lime-600 px-5">
@@ -112,6 +123,8 @@
                 </ul>
             </div>
         </div>
+
+        {{-- Descripcion --}}
         <div>
             <span class="font-bold">Descripcion:</span>
             <div class="border-l-4 border-l-purple-400 px-5">
@@ -121,12 +134,6 @@
                     <p class="opacity-35">Sin descripcion.</p>
                 @endif
             </div>
-        </div>
-        <div class="flex justify-center">
-            <a class="inline-block border-2 border-purple-400 text-purple-400 hover:bg-purple-400 hover:text-purple-50 transition-colors rounded-full text-lg px-5 py-3"
-                href="/materias/{{ $cuestionario->tema->id_materia }}/temas/{{ $cuestionario->tema->id }}">
-                Volver a materia
-            </a>
         </div>
     </div>
 </div>

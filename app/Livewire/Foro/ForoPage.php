@@ -15,17 +15,9 @@ class ForoPage extends Component
      */
     public $publicaciones;
 
-    /**
-     * Todas las categorias
-     * 
-     * @var array<Categoria>
-     */
-    public $categorias;
-
     public function mount()
     {
         $this->publicaciones = Publicacion::orderBy('fecha', 'desc')->get();
-        $this->categorias = Categoria::all();
     }
 
     public function render()

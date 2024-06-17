@@ -32,7 +32,7 @@
                                     class="flex justify-between text-sm p-1 border rounded-full border-amber-500 text-amber-500">
                                     <span class="inline-block text-center w-full">{{ $categoria }}</span>
                                     <button class="rounded-full text-red-500"
-                                        wire:click="eliminar_categoria({{ $id }})">
+                                        wire:click.prevent="eliminar_categoria({{ $id }})">
                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
                                             class="inline size-6">
                                             <path fill-rule="evenodd"

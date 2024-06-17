@@ -1,4 +1,12 @@
 <div class="w-1/3 p-5 space-y-5">
+    {{-- Botones --}}
+    <div class="flex justify-center">
+        <a class="w-full text-center inline-block border-2 border-purple-400 text-purple-400 hover:bg-purple-400 hover:text-purple-50 transition-colors rounded-full text-lg px-5 py-3"
+            href="/logout">
+            Cerrar sesion
+        </a>
+    </div>
+
     {{-- Informacion del docente --}}
     <div>
         <span class="font-bold">Datos personales:</span>
@@ -17,4 +25,5 @@
             </div>
         </div>
     </div>
+
 </div>

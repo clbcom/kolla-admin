@@ -38,7 +38,7 @@
                     </div>
 
                     @if (count($post->medios) > 0)
-                        <div>
+                        <div class="w-1/2">
                             <img src="{{ Storage::url($post->medios[0]->url) }}" alt="">
                         </div>
                     @endif

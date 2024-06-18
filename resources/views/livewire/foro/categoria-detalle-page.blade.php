@@ -2,8 +2,8 @@
     {{-- publicaciones --}}
     <div class="w-2/3 space-y-5">
         <div class="px-5">
-            <h2 class="text-4xl">El foro del <span class="font-bold text-amber-500">Kolla</span></h2>
-            <p>{{ $categoria->nombre }}</p>
+            <h2 class="text-xl opacity-50">El foro del <span class="font-bold text-amber-500">Kolla</span></h2>
+            <h2 class="text-4xl">{{ $categoria->nombre }}</h2>
         </div>
         <div class="px-5 space-y-3">
             @if (count($publicaciones) === 0)
@@ -50,7 +50,7 @@
                     </div>
 
                     @if (count($post->medios) > 0)
-                        <div>
+                        <div class="w-1/2">
                             <img src="{{ Storage::url($post->medios[0]->url) }}" alt="">
                         </div>
                     @endif
@@ -84,16 +84,15 @@
                             </span>
                         </div>
                         <div>
-                            <span>
+                            <a class="hover:text-amber-500" href="/foro/post/{{ $post->id }}">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
                                     class="inline size-6">
                                     <path fill-rule="evenodd"
                                         d="M4.848 2.771A49.144 49.144 0 0 1 12 2.25c2.43 0 4.817.178 7.152.52 1.978.292 3.348 2.024 3.348 3.97v6.02c0 1.946-1.37 3.678-3.348 3.97a48.901 48.901 0 0 1-3.476.383.39.39 0 0 0-.297.17l-2.755 4.133a.75.75 0 0 1-1.248 0l-2.755-4.133a.39.39 0 0 0-.297-.17 48.9 48.9 0 0 1-3.476-.384c-1.978-.29-3.348-2.024-3.348-3.97V6.741c0-1.946 1.37-3.68 3.348-3.97ZM6.75 8.25a.75.75 0 0 1 .75-.75h9a.75.75 0 0 1 0 1.5h-9a.75.75 0 0 1-.75-.75Zm.75 2.25a.75.75 0 0 0 0 1.5H12a.75.75 0 0 0 0-1.5H7.5Z"
                                         clip-rule="evenodd" />
                                 </svg>
-
-                                Comentar
-                            </span>
+                                {{ count($post->comentarios) }} Respuestas
+                            </a>
                         </div>
                     </div>
                 </div>

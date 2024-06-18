@@ -13,6 +13,7 @@ use App\Livewire\Cuestionarios\CuestionarioPage;
 use App\Livewire\Foro\CategoriaDetallePage;
 use App\Livewire\Foro\ForoPage;
 use App\Livewire\Foro\PublicacionDetallePage;
+use App\Livewire\Publicaciones\EditarPublicacionPage;
 use App\Livewire\Publicaciones\NuevaPublicacionPage;
 
 Route::get('/', PaginaInicio::class);
@@ -27,6 +28,7 @@ Route::get('/registrar', Registrar::class);
 Route::get('/logout', [Login::class, 'logout'])->middleware('auth');
 Route::get('/mio', PerfilMioPage::class)->middleware('auth'); // informacion del perfil logueado
 Route::get('/mio/nuevopost', NuevaPublicacionPage::class)->middleware('auth');
+Route::get('/mio/post/{publicacion}', EditarPublicacionPage::class)->middleware('auth');
 
 Route::get('/foro', ForoPage::class);
 Route::get('/foro/categorias/{categoria}', CategoriaDetallePage::class);

@@ -6,11 +6,15 @@
 
         {{-- Listado de publicaciones --}}
         <div class="text-lg">
-            <form class="space-y-5" wire:submit="guardar">
+            <form class="space-y-5">
+                <div class="px-5 space-x-5">
+                    <input type="checkbox" name="esta_resuelto" wire:model="esta_resuelto" id="esta_resuelto">
+                    <label class="font-bold" for="esta_resuelto">Marcar como resuelto</label>
+                </div>
                 {{-- Contenido --}}
                 <div class="flex flex-col px-5">
                     <label class="font-bold" for="contenido">Contenido:</label>
-                    <textarea class="border rounded-xl px-5 py-3 h-64" name="contenido" id="contenido" wire:model.lazy="contenido"></textarea>
+                    <textarea class="border rounded-xl px-5 py-3 h-64" name="contenido" id="contenido" wire:model="contenido"></textarea>
                 </div>
 
                 {{-- Categorias --}}
@@ -31,7 +35,7 @@
                                 <div
                                     class="flex justify-between text-sm p-1 border rounded-full border-amber-500 text-amber-500">
                                     <span class="inline-block text-center w-full">{{ $categoria }}</span>
-                                    <button class="rounded-full text-red-500"
+                                    <button class="rounded-full text-red-500 cursor-pointer"
                                         wire:click.prevent="eliminar_categoria({{ $id }})">
                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
                                             class="inline size-6">
@@ -70,13 +74,15 @@
                                             clip-rule="evenodd" />
                                     </svg>
                                 </button>
-                                <img class="w-full h-full object-contain" src="{{ $medio->temporaryUrl() }}">
+                                <img class="w-full h-full object-contain"
+                                    src="{{ $medio->isPreviewable() ? $medio->temporaryUrl() : Storage::url('/medios/' . $medio->getFileName()) }}">
                             </div>
                         @endif
                     </div>
                 </div>
                 <div class="p-5">
-                    <button class="bg-amber-500 font-bold border rounded-xl w-full py-3" type="submit">Enviar</button>
+                    <button wire:click.prevent="guardar"
+                        class="bg-amber-500 font-bold border rounded-xl w-full py-3">Guardar</button>
                 </div>
             </form>
         </div>

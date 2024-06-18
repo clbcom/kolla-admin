@@ -38,6 +38,13 @@ class Login extends Component
         'email' => 'required|email',
         'password' => 'required'
     ];
+
+    public $redireccion;
+    public function mount(Request $request)
+    {
+        $this->redireccion = $request->input('redirect', '/');
+    }
+
     /**
      * Inicio de sesion
      */
@@ -50,7 +57,8 @@ class Login extends Component
         ];
         if (Auth::attempt($datos)) {
             session()->regenerate();
-            return redirect('/');
+
+            return redirect()->intended($this->redireccion);
         }
 
         $this->addError('email', "Datos invalidos");

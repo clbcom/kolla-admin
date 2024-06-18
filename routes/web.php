@@ -22,7 +22,7 @@ Route::get('/materias/{materia}', MateriaDetallePage::class);
 Route::get('/materias/{id_materia}/temas/{tema}', TemaDetallePage::class);
 Route::get('/cuestionarios/{cuestionario}', CuestionarioPage::class);
 
-Route::get('/login', Login::class);
+Route::get('/login', Login::class)->name('login');
 Route::get('/registrar', Registrar::class);
 Route::get('/logout', [Login::class, 'logout'])->middleware('auth');
 Route::get('/mio', PerfilMioPage::class)->middleware('auth'); // informacion del perfil logueado

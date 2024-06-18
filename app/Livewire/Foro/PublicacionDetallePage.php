@@ -2,8 +2,8 @@
 
 namespace App\Livewire\Foro;
 
-use App\Models\Publicacion;
 use Livewire\Component;
+use App\Models\Publicacion;
 
 class PublicacionDetallePage extends Component
 {

@@ -8,7 +8,8 @@ use App\Models\Comentario;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
-class Publicacion extends Post {
+class Publicacion extends Post
+{
 
     /**
      * @var string
@@ -27,14 +28,24 @@ class Publicacion extends Post {
     /**
      * Obtiene las categorias de la publicacion
      */
-    public function categorias() : BelongsToMany {
+    public function categorias(): BelongsToMany
+    {
         return $this->belongsToMany(Categoria::class, 'categorias_publicaciones', 'id_publicacion', 'id_categoria');
+    }
+
+    /**
+     * Obtener los medios
+     */
+    public function medios(): HasMany
+    {
+        return $this->hasMany(Medio::class, 'id_publicacion');
     }
 
     /**
      * Obtiene los comentarios
      */
-    public function comentarios() : HasMany {
+    public function comentarios(): HasMany
+    {
         return $this->hasMany(Comentario::class, 'id_publicacion');
     }
 }

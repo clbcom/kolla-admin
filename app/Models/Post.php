@@ -28,13 +28,6 @@ class Post extends Model
     }
 
     /**
-     * Obtener los medios
-     */
-    public function medios() : HasMany {
-        return $this->hasMany(Medio::class, 'id_publicacion');
-    }
-
-    /**
      * Obtiene los votos
      */
     public function votos() : HasOne {

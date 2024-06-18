@@ -9,7 +9,7 @@
             @if (count($publicaciones) > 0)
                 @foreach ($publicaciones as $post)
                     <div class="text-lg bg-white p-5">
-                        <p>{{ $post->contenido }}</p>
+                        <p>{!! nl2br($post->contenido) !!}</p>
                         <div class="flex justify-between gap-2">
                             <div>
                                 <a class="text-lime-700 font-bold" href="/mio/post/{{ $post->id }}">Editar</a>

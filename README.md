@@ -1,66 +1,91 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Proyecto de Ingenieria de sistemas II
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Esta es una proyecto que servira de refuerzo para los estudiantes de la carrera de Ingenieria de sistemas de la UPEA
 
-## About Laravel
+Esta plataforma contiene un apartado donde podras buscar los contenidos por semestres con el contenido del plan de estudio de la carrera, separada por semestres
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Tambien contiene un apartado de foro donde podran publicar sus dudas lo mas detallada posible para que la comunidad pueda responderle
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Herramientas
+-   php +v8.2
+-   mysql
+-   composer
+-   nodejs y npm
+-   activar los extensiones zip
+-   Tener agregado al path las rutas de php y mysql
+---
+## Instalacion
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+1. **php** puede descargar [xampp](https://www.apachefriends.org/download.html) desde su pagina oficial.
+2. **Composer**, puede instalar desde su [pagina oficial](https://getcomposer.org/download/) eliga el recomendado para su sistema operativo.
+3. **NodeJS** puede descargar desde su [pagina inicial](https://nodejs.org/en/download/package-manager)
+4. Si no tiene activada las extenciones zip `extension=intl` y `extension=zip` en el archivo de configuracion de php `php.ini`
+5. Clonar este repositorio en su maquina local e instalar dependencias
+   ```bash
+      git clone https://github.com/clbcom/kolla-admin.git
+      cd kolla-admin
+      composer install
+   ```
+6. Configurar las variables de entorno de la base de datos
+   ```env
+      DB_CONNECTION=mariadb
+      DB_HOST=127.0.0.1
+      DB_PORT=3306
+      DB_DATABASE=kolla
+      DB_USERNAME=root
+      DB_PASSWORD=
+   ```
+7. Descomentar las lineas que estan dentro la funcion ```run``` que son los datos iniciales para ser cargados con la migracion
+   ```php
+      // database/seeders/DatabaseSeeder.php
+      namespace Database\Seeders;
 
-## Learning Laravel
+      // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+      use Illuminate\Database\Seeder;
+      use Database\Seeders\DatosInicialesUsuarios;
+      use Database\Seeders\DatosInicialesSemestres;
+      use Database\Seeders\DatosInicialesCategorias;
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+      class DatabaseSeeder extends Seeder
+      {
+         /**
+         * Seed the application's database.
+         */
+         public function run(): void
+         {
+            // $this->call(DatosInicialesCategorias::class);
+            // $this->call(DatosInicialesSemestres::class);
+            // $this->call(DatosInicialesUsuarios::class);
+         }
+      }
+   ```
+8. Correr las migraciones con los datos iniciales junto con los seeders
+   ```bash
+      php artisan migrate --seed
+   ```
+9. Correr la aplicacion, debe ejecutar simultaneamente los seguientes comandos
+   ```bash
+      # inicia la aplicacion
+      php artisan serve
+   ```
+   ```bash
+      # inicia los estilos de tailwind
+      npm run dev
+   ```
+---
+## Uso
+Para acceder al panel de usuarios docentes dirigase a la ruta en su navegador ```http://localhost:8000/admin```
+Para acceder a la pagina principal dirijase a la ruta ```http://localhost:8000```
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## Tabla de usuarios
+| Email                    | Contraseña | Tipo de usuario |
+| ------------------------ | ---------- | --------------- |
+| clb@clb.com              | clb        | Docente         |
+| dmcm@gmail.com           | dmcm       | Docente         |
+| dfcm@gmail.com           | dfcm       | Docente         |
+| carlos.perez@gmail.com   | 1234       | Alumno          |
+| maria.lopez@gmail.com    | 12345      | Alumno          |
+| jorge.gonzales@gmail.com | 123456     | Alumno          |
+| ana.rojas@gmail.com      | 1234567    | Alumno          |
+| luis.vargas@gmail.com    | 12345678   | Alumno          |

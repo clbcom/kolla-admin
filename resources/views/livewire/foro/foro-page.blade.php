@@ -53,7 +53,7 @@
 
                     {{-- Acciones des post --}}
                     <div class="flex justify-between border-t-4 pt-3">
-                        <div class="space-x-3">
+                        {{-- <div class="space-x-3">
                             <span>
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
                                     class="inline size-6">
@@ -70,7 +70,7 @@
                                 </svg>
 
                             </span>
-                        </div>
+                        </div> --}}
                         <div>
                             <a class="hover:text-amber-500" href="/foro/post/{{ $post->id }}">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"

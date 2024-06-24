@@ -65,7 +65,8 @@ class EditarPublicacionPage extends Component
             $this->categoriasSeleccionadas[$categoria->id] = $categoria->nombre;
         }
         if (count($this->publicacion->medios) > 0) {
-            $this->medio = TemporaryUploadedFile::createFromLivewire($this->publicacion->medios[0]->url);
+            $this->medio = $this->publicacion->medios[0]->url;
+            // $this->medio = TemporaryUploadedFile::createFromLivewire($this->publicacion->medios[0]->url);
         }
     }
 
@@ -102,10 +103,11 @@ class EditarPublicacionPage extends Component
             if (isset($this->medio)) {
                 if (isset($this->publicacion->medios[0])) {
                     $medio = $this->publicacion->medios[0];
-                    Storage::disk('public')->delete($medio->url);
-
-                    $medio->url = $this->medio->storePublicly(path: 'medios');
-                    $medio->save();
+                    if ($medio->url !== $this->medio) {
+                        Storage::disk('public')->delete($medio->url);
+                        $medio->url = $this->medio->storePublicly(path: 'medios');
+                        $medio->save();
+                    }
                 } else {
                     $url_medio = $this->medio->storePublicly(path: 'medios');
                     Medio::create([

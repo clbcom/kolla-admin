@@ -74,8 +74,8 @@
                                             clip-rule="evenodd" />
                                     </svg>
                                 </button>
-                                <img class="w-full h-full object-contain"
-                                    src="{{ $medio->isPreviewable() ? $medio->temporaryUrl() : Storage::url('/medios/' . $medio->getFileName()) }}">
+                                <img class="w-full h-full object-contain" {{-- src="{{ $medio->isPreviewable() ? $medio->temporaryUrl() : Storage::url('/medios/' . $medio->getFileName()) }}"> --}}
+                                    src="{{ str_ends_with($medio, 'tmp') ? $medio->temporaryUrl() : Storage::url($medio) }}">
                             </div>
                         @endif
                     </div>
